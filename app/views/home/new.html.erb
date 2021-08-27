@@ -1,22 +1,31 @@
 <form>
-  <label>Enter Email</label>
+  <label><strong style="margin-top: 1em;">Enter Email</strong></label>
+  <div style="margin-top: 0.5em;">
   <input type="email" class="form-control" id="email-field">
+  </div>
 </form>
 
-<div class="text-center" style="margin-top: 1em;" id="full_email"></div>
-<div class="text-center" style="margin-top: 1em;" id="before_at"></div>
-<div class="text-center" style="margin-top: 1em;" id="after_at"></div>
-<div class="text-center" style="margin-top: 1em;" id="mail_to_link"></div>
+<div class="text-center" style="margin-top: 1em; margin-left: -48em; " id="full_email"></div>
+<div class="text-center" style="margin-top: 1em; margin-left: -48em; " id="before_at"></div>
+<div class="text-center" style="margin-top: 1em; margin-left: -48em; " id="after_at"></div>
+<div class="text-center" style="margin-top: 1em; margin-left: -48em; " id="mail_to_link"></div>
 
 <script>
   
     $("#email-field").keyup(function () {
         $("#full_email").empty()
+        $("#before_at").empty()
+        $("#after_at").empty()
+        $("#mail_to_link").empty()
+        $("#mail_to_link").children().remove('a')
+
+
         $("#full_email").append($(this).val())
 
-        if (validateEmail($(this).val())) {
+        if (validateEmail($(this).val()) && $(this).val().length > 0) {
             $(this).removeClass("error")
             $(this).addClass("success")
+            $("#mail_to_link").append("<a href=mailto:" + $(this).val() + "?subject=" + "this is a easy task" + ">Mail to</a>")
         } else {
             $(this).removeClass("success")
             $(this).addClass("error")
@@ -25,20 +34,15 @@
         var splitted_email = $(this).val().split("@")
 
         if (splitted_email.length == 1) {
-            $("#before_at").empty()
             $("#before_at").append(splitted_email[0])
         }
 
         if (splitted_email.length == 2) {
-            $("#before_at").empty()
             $("#before_at").append(splitted_email[0])
 
-            $("#after_at").empty()
             $("#after_at").append(splitted_email[1])
         }
 
-        $("#mail_to_link").empty()
-        $("#mail_to_link").append("<a href=mailto:" + $(this).val() + "?subject=this is a easy task><button>Click</button></a>")
     })
 
     function validateEmail($email) {
