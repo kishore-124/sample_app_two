@@ -5,10 +5,10 @@
   </div>
 </form>
 
-<div class="text-center" style="margin-top: 1em; margin-left: -48em; " id="full_email"></div>
-<div class="text-center" style="margin-top: 1em; margin-left: -48em; " id="before_at"></div>
-<div class="text-center" style="margin-top: 1em; margin-left: -48em; " id="after_at"></div>
-<div class="text-center" style="margin-top: 1em; margin-left: -48em; " id="mail_to_link"></div>
+<div class="text-center" style="margin-top: 1em; margin-left: -24em; " id="full_email"></div>
+<div class="text-center" style="margin-top: 1em; margin-left: -24em; " id="before_at"></div>
+<div class="text-center" style="margin-top: 1em; margin-left: -24em; " id="after_at"></div>
+<div class="text-center" style="margin-top: 1em; margin-left: -24em; " id="mail_to_link"></div>
 
 <script>
   
@@ -25,7 +25,7 @@
         if (validateEmail($(this).val()) && $(this).val().length > 0) {
             $(this).removeClass("error")
             $(this).addClass("success")
-            $("#mail_to_link").append("<a href=mailto:" + $(this).val() + "?subject=" + "this is a easy task" + ">Mail to</a>")
+            $("#mail_to_link").append("<a href=mailto:" + $(this).val() + "?subject=" + "this_is_a_easy_task" + ">Mail to</a>")
         } else {
             $(this).removeClass("success")
             $(this).addClass("error")
